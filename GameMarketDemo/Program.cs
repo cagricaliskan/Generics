@@ -16,7 +16,9 @@ namespace GameMarketDemo
                 BirthYear = 1998,
                 IdNo = "12345678901"
             };
+            CustomerManager cm = new CustomerManager(new UserValidationManager());
 
+            cm.Add(c1);
 
             Game g1 = new Game
             {

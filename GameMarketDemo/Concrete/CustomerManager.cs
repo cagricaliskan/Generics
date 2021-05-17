@@ -7,9 +7,24 @@ namespace GameMarketDemo.Concrete
 {
     class CustomerManager : ICustomerService
     {
+        IUserValidationService userValidationService;
+
+        public CustomerManager(IUserValidationService userValidationService)
+        {
+            this.userValidationService = userValidationService;
+        }
+
         public void Add(Customer customer)
         {
-            Console.WriteLine(customer.Name + " has been added to system.");
+            if(userValidationService.Validate(customer) == true)
+            {
+                Console.WriteLine(customer.Name + " has been added to system.");
+            }
+            else
+            {
+                Console.WriteLine("Incorrect user information");
+            }
+            
         }
 
         public void Update(Customer customer)
